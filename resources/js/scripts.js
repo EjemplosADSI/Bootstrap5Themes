@@ -27,5 +27,17 @@
         })
     })
 
+    const increaseFontSize = () => {
+        const currentFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
+        document.documentElement.style.fontSize = `${currentFontSize + 1}px`
+    }
+
+    const decreaseFontSize = () => {
+        const currentFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
+        document.documentElement.style.fontSize = `${currentFontSize - 1}px`
+    }
+
+    document.querySelector('.float-element.tooltip-left').addEventListener('click', increaseFontSize)
+    document.querySelector('.float-element:not(.tooltip-left)').addEventListener('click', decreaseFontSize)
 })();
 
