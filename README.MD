@@ -1,4 +1,4 @@
-# Manejo de Themas en Bootstrap 5
+# Manejo de Temas en Bootstrap 5
 Repositiorio de ejemplo para aplicar el modo oscuro y temas a bootstrap
 
 1. npm install 
