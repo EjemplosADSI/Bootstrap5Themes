@@ -27,17 +27,91 @@
         })
     })
 
-    const increaseFontSize = () => {
-        const currentFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
-        document.documentElement.style.fontSize = `${currentFontSize + 1}px`
-    }
+    var labels = {
+        resetTitle: 'Reiniciar',
+        closeTitle: 'Cerrar',
+        menuTitle: 'Menú de Accesibilidad',
+        increaseText: 'Aumentar tamaño de texto',
+        decreaseText: 'Disminuir tamaño de texto',
+        increaseTextSpacing: 'Aumentar espaciado de texto',
+        decreaseTextSpacing: 'Disminuir espaciado de texto',
+        increaseLineHeight: 'Aumentar altura de línea',
+        decreaseLineHeight: 'Disminuir altura de línea',
+        invertColors: 'Invertir colores',
+        grayHues: 'Tonos grises',
+        underlineLinks: 'Subrayar enlaces',
+        bigCursor: 'Cursor grande',
+        readingGuide: 'Guía de lectura',
+        textToSpeech: 'Texto a voz',
+        speechToText: 'Voz a texto',
+        disableAnimations: 'Desactivar animaciones'
+    };
 
-    const decreaseFontSize = () => {
-        const currentFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
-        document.documentElement.style.fontSize = `${currentFontSize - 1}px`
-    }
+    var options = {
+        labels: labels,
+        hotkeys: {
+            enabled: true
+        },
+        session: {
+            persistent: true
+        },
+        icon: {
+            circular: true,
+            backgroundColor: '#de270c',
+            color: '#fff',
+            useEmojis: true,
+            img: "accessible",
+            position: {
+                bottom: { size: 2, units: 'vh' },
+                right: { size: 2, units: '%' },
+                type: 'absolute'
+            }
+        },
 
-    document.querySelector('.float-element.tooltip-left').addEventListener('click', increaseFontSize)
-    document.querySelector('.float-element:not(.tooltip-left)').addEventListener('click', decreaseFontSize)
+        customFunctions: [{
+            method: (cf, state) => {
+                const theme = "light"
+                setStoredTheme(theme)
+                setTheme(theme)
+            },
+            buttonText: 'Modo Claro',
+            id: 1,
+            toggle: false,
+            icon: 'light_mode',
+            emoji: '☀️'
+        },
+        {
+            method: (cf, state) => {
+                const theme = "dark"
+                setStoredTheme(theme)
+                setTheme(theme)
+            },
+            buttonText: 'Modo Oscuro',
+            id: 2,
+            toggle: false,
+            icon: 'dark_mode',
+            emoji: '🌙'
+        }]
+    };
+    options.textToSpeechLang = 'es-ES';
+    options.speechToTextLang = 'es-ES';
+
+    options.modules = {
+        increaseText: true,
+        decreaseText: true,
+        invertColors: true,
+        increaseTextSpacing: true,
+        decreaseTextSpacing: true,
+        increaseLineHeight: true,
+        decreaseLineHeight: true,
+        grayHues: true,
+        underlineLinks: true,
+        bigCursor: true,
+        readingGuide: true,
+        textToSpeech: true,
+        speechToText: true,
+        disableAnimations: true
+    };
+
+    window.addEventListener('load', function () { new Accessibility(options); }, false);
 })();
-

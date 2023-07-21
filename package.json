@@ -27,6 +27,7 @@
     "sass": "^1.63.6",
     "sass-lint": "^1.13.1",
     "uglify-js": "^3.17.4",
-    "uglifyjs-folder": "^3.3.0"
+    "uglifyjs-folder": "^3.3.0",
+    "accessibility": "^4.5.7"
   }
 }
